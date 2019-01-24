@@ -33,7 +33,7 @@ def empty_val(x):
     else:
         return False
 
-@app.route('/blog_content', , methods=['POST', 'GET'])
+@app.route('/blog_content', methods=['POST', 'GET'])
 def article():
     post_id = request.args.get('id')
     my_blog = Blog.query.get(post_id)
