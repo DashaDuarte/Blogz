@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <header>
+        
+    </header>
+
+    <h2>{{blog.title}}</h2>
+            <p>{{blog.post}}</p>
+
+
+   
+
+</body>
+</html>S

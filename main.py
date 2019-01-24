@@ -1,6 +1,6 @@
-from flask import Flask, request, redirect, render_template
+from flask import request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
-
+    
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:pass123@localhost:3306/build-a-blog'
@@ -33,8 +33,14 @@ def empty_val(x):
     else:
         return False
 
+@app.route('/blog_content', , methods=['POST', 'GET'])
+def article():
+    post_id = request.args.get('id')
+    my_blog = Blog.query.get(post_id)
+    return render_template('blog_content' , blog = my_blog) 
 
-@app.route('/newpost', methods=['POST', 'GET'])
+
+@app.route('/newblog ', methods=['POST', 'GET'])
 def add_entry():
 
     if request.method == 'POST':
@@ -55,16 +61,16 @@ def add_entry():
             if not empty_val(post_title) and not empty_val(post_entry):
                 title_error = "Enter blog title"
                 blog_entry_error = "Enter blog entry"
-                return render_template('new_post.html', blog_entry_error=blog_entry_error, title_error=title_error)
+                return render_template('new_blog.html', blog_entry_error=blog_entry_error, title_error=title_error)
             elif not empty_val(post_title):
                 title_error = "Enter text for blog title"
-                return render_template('new_post.html', title_error=title_error, post_entry=post_entry)
+                return render_template('new_blog.html', title_error=title_error, post_entry=post_entry)
             elif not empty_val(post_entry):
                 blog_entry_error = "Enter text for blog entry"
-                return render_template('new_post.html', blog_entry_error=blog_entry_error, post_title=post_title)
+                return render_template('new_blog.html', blog_entry_error=blog_entry_error, post_title=post_title)
 
     else:
-        return render_template('new_post.html')
+        return render_template('new_blog.html')
         
 if __name__ == '__main__':
     app.run()
