@@ -1,16 +1,74 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html>
+    <head>
+        <title>{{title}}</title>
+        <style>
+            *{
+                font-family: 'Times New Roman', Times, serif;
+            }
+            .error {
+                color: grey;
+            }
+            table, tr, td {
+                border: 2px solid black;
+            }
+            .link_button { 
+                background: none;
+                border: none;
+                text-decoration: underline;
+                cursor: pointer; 
+                font-size: 3.045em;
+            }
+            header, footer {
+                text-align: center;
+                font-size: 3.05em;
+                background-color: darkgrey;
+                border: 2px solid black;
+            }
+            body {
+                background-color: blue;
+            }
+            main {
+                background-color: grey;
+                font-size: 3.211em;
+                border: 2px solid black;
+            }
+            thead {
+                font-size: 1.207em;
+                text-align: center;
 
-<body>
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <table>
+                    <tr>
+                        <td> <a href= '/blog'> Home </a> </td>
+                        <td> <a href= '/UserPage'> Users </a> </td>
+                        <td> <a href= '/add'> Add a blog post </a> </td>
+                        <td> <a href= '/login'> Login </a> </td>
+                        <td> <a href= '/logout'> Logout </a> </td>
+                        <td> <a href= '/register'> Register </a> </td> 
+                    </tr>
+                </table>
+            </div>
+        </header>
+        <br>
+        <main>
 
-    <header>
-        <nav><a href="/blog">Dashas Blog</a> <a href="/newblog">Add a Blog Entry</a>
-        </nav>
-    </header>
+            {% block content %}
 
-    {% block content %}
-    {% endblock %}
+            {% endblock %}
 
-</body>
-</html>S
+        </main>
+        <br>
+        <footer>
+            <p>Dasha's Stuff</p>
+            <a href= "https://github.com/DashaDuarte/Blogz">
+                https://github.com/DashaDuarte/Blogz
+            </a> 
+        </footer>
+    </body>
+</html>
